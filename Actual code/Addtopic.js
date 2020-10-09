@@ -122,10 +122,9 @@ describe('Public channel Right panel functionality', function () {
     first.topiccount();
     expect(first.headertopicscount()).toContain(first.addtopiclistcount());
   });
-  first.Menubarcalenderclick();
-  first.closerightpanel();
-  
-  // Venkata//
+  //Venkata nesw code//
+  first.clearsearchresult();
+  first.addtopiclistcount();
   
   
   
