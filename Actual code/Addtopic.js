@@ -122,9 +122,7 @@ describe('Public channel Right panel functionality', function () {
     first.topiccount();
     expect(first.headertopicscount()).toContain(first.addtopiclistcount());
   });
-  //Venkata nesw code//
-  first.clearsearchresult();
-  first.addtopiclistcount();
+  
   
   
   
