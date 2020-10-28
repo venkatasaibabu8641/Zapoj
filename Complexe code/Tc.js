@@ -3,6 +3,7 @@ const { browser, element } = require('protractor');
 const { lstat } = require('fs');
 const { lookupService } = require('dns');
 const { format } = require('path');
+const { protractor } = require('protractor/built/ptor');
 
 function sleep()
 {
@@ -338,7 +339,7 @@ this.createchannel = function(){
 }
 this.channelname = function(){
   sleep();
-  element(by.id("channelName")).sendKeys("Automationchannelpublic");
+  element(by.id("channelName")).sendKeys("Automationchannelannouncement");
   sleep();
 }
 this.channeldescription = function(){
@@ -347,6 +348,7 @@ this.channeldescription = function(){
 }
 this.generalchannelrbuttonclick = function(){
   element(by.id("generalRadio")).click();
+
   sleep();
 }
 this.selectallmemberscheckbox = function(){
@@ -431,6 +433,11 @@ this.getrightpanelchannelname = function(){
   sleep();
  return element(by.xpath("//h4[@class='media-heading pointer']")).getText(); 
 }
+this.pickchannle = function(){
+  sleep();
+  element(by.xpath("//ul[@class='memberList channel-list list-unstyled']//li[2]//a")).click();
+  sleep();
+}
 
 //--------------------------------For Private channel Functionality-----------------------//
   this.privatebuttonclick = function(){
@@ -448,9 +455,22 @@ this.announcementbuttonclick = function(){
   element(by.xpath("//div[@class='modal-dialog modal-lg']//div[@class='modal-body']//div[2]//span[@class='checkmark']")).click();
   sleep();
 }
-
-
-
+this.announcementrightpanelchannelname = function(){
+  sleep();
+  return element(by.xpath("(//div[@class='profile-table']//span)[1]")).getText();
+}
+this.announcementrightpanelmemberscount = function(){
+  sleep();
+  return element(by.xpath("(//div[@class='profile-table']//span)[2]")).getText();
+}
+this.announcementrightpanelcreatedby = function(){
+  sleep();
+  return element(by.xpath("(//div[@class='profile-table']//span)[3]")).getText();
+}
+this.announcementrightpanelcreateddate = function(){
+  sleep();
+  return element(by.xpath("(//div[@class='profile-table']//span)[4]")).getText();
+}
 
 
 //-------------------------------------------------------------------//
@@ -464,7 +484,7 @@ this.instanceclick = function(){
 
 this.pickuserinleftpanel = function() {
   sleep();
-  element(by.xpath("//ul[@class='memberList list-unstyled member-only']/li[7]//span[@class='user-name unread-msg-user']")).click();
+  element(by.xpath("//ul[@class='memberList list-unstyled member-only']//span[@id='userId0']")).click();
   
 }
 this.threadclick = function() {
@@ -716,13 +736,24 @@ this.clickonmenubardirection = function(){
 }
 this.directionfrom = function(){
   sleep();
-  element(by.id("#search_from")).sendKeys("vijaya");
-  browser.actions().keyDown(Protractor.Key.SHIFT).perform();
-  browser.actions().sendKeys(protractor.Key.ENTER).perform();
+  element(by.css("#search_from")).sendKeys("vijayawada");
+  sleep()
+;  //element(by.css("#search_from")).sendKeys(protractor.Key.SHIFT).sendKeys(protractor.Key.ENTER).perform();
+  //browser.actions().keyDown(Protractor.Key.SHIFT).perform();
+  //browser.actions().sendKeys(protractor.Key.ENTER).perform();
 }
 this.directionto = function(){
   sleep();
-  element(by.id("#search_to")).sendKeys("guntur");
+  element(by.css("#search_to")).sendKeys("guntur");
+}
+this.keyboardactionsfrom = function(){
+  sleep();
+  // var arrowdown =browser.actions().sendKeys(protractor.Key.ARROW_DOWN);
+  // arrowdown.perform();
+  // var enter = browser.actions().sendKeys(protractor.Key.ENTER);
+  // enter.perform();
+  element(by.xpath("//div[@class='pac-container pac-logo']/div[1]/span[3]")).click();
+  sleep();
 }
 this.clickonmembersradionutton = function(){
   sleep();
@@ -739,7 +770,7 @@ this.frommemberselectinmembersearch = function(){
 }
 this.entermembernameintoTofield = function(){
   sleep();
-  element(by.css("#search_to")).sendKeys("nagaraju shaku");
+  element(by.css("#search_to")).sendKeys("venkata");
 }
 this.tomemberselectinmemberssearch = function(){
   sleep();
@@ -818,15 +849,59 @@ this.createbutton = function(){
   sleep();
 }
 
+//-----------------------instant chat unctionality--------------------------//
+this.createplusbuttonclick = function(){
+  sleep();
+  element(by.css("a[title='Add New Instant Group'] > .fa")).click();
+
+}
+this.enteravalueforselectingusersininstance = function(){
+  sleep();
+  element(by.css("#Usera")).sendKeys("testing");
+}
+this.selectingmembersforinstants = function(){
+  sleep();
+  element(by.css(".instant-list-container")).all(by.css(".unstyle-list.new-assignee-list.mb-10 li")).get(0).click();
+  element(by.css(".instant-list-container")).all(by.css(".unstyle-list.new-assignee-list.mb-10 li")).get(1).click();
+  element(by.css(".instant-list-container")).all(by.css(".unstyle-list.new-assignee-list.mb-10 li")).get(2).click();
+}
+this.clickonsavebuttonforinstance = function(){
+  sleep();
+  element(by.css("div.share-popup-footer>button.btn-primary")).click();
+}
 
 
 
+///----------------------Task manager card create and Edit----------//
+this.clickontaskmanager = function(){
+  sleep();
+  element(by.css("ul.nav.navbar-nav.navbar-right.service-nav>li[title='Task Manager']")).click();
+  sleep();
+}
+this.clickonviewalllink = function(){
+  sleep();
+  element(by.xpath("//a[.='View All Boards']")).click();
+  sleep();
+}
+this.selectboard = function(){
+  sleep();
+  element(by.xpath("//aadhya-task-page[1]/aadhya-dynamic-modal[@class='medium-popup board-list-modal']//span[.='new kanban 12 test']")).click();
+  sleep();
+}
+this.createlist = function(){
+  sleep();
+  element(by.css(".fa-plus-circle.fa.fa-3x.text-primary")).click();
+}
+this.enterlistname = function(){
+  sleep();
+  element(by.css(".form-group.p-15.mb-0>input")).sendKeys("Newautomationlist");
 
-
-
-
-
-
+}
+this.clickforcreatelist = function(){
+  sleep();
+  element(by.xpath("//button[@class='btn btn-primary']")).click();
+  sleep();
+}
 
 
 
