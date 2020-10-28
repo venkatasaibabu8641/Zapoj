@@ -4,8 +4,6 @@ var first = require('./../Complexe code/Tc.js');
 //var common = require('./../Commoncode/Uc.js')
 const { ExpectedConditions, element, browser } = require('protractor');
 
-
-
 describe('Team Right panel functionality', function () {
 
     it ('User login to the application', function () {
@@ -13,13 +11,12 @@ describe('Team Right panel functionality', function () {
         first.getUrl(datacode.url);
         first.userName(datacode.userName);
         first.password(datacode.password);
+
         first.loginclick();
-        //first.groupclick();
+        first.leftgrpname();
     });
 
     it ('Checking the Team name', function()  {
-
-        
 
         if(first.comparinggrpnames())
         {
@@ -36,7 +33,6 @@ describe('Team Right panel functionality', function () {
     });
         it ("Checking the rightside panel opened or not",function() {
 
-            
             if (first.comparinrightgrpnames())
         {
                 expect("rightsidegroupnamesame").toBe("rightsidegroupnamesame");
@@ -49,14 +45,12 @@ describe('Team Right panel functionality', function () {
         }
 
      });
-    
-
         it ("Checking the groupname,members count,Email,Created-by,Created-on in Group profile Tab",function() {
             
             
             expect(first.headermembercount()).toContain(first.rightpmembercount());
-            expect(first.email()).toContain("@");
-            expect(first.date()).toContain("2020");
+            expect(first.email()).toContain("#");
+            expect(first.date()).toContain("2021");
 
      });
 
@@ -97,20 +91,13 @@ describe('Team Right panel functionality', function () {
             first.groupinnerclick();
             first.sharefileclick();
             expect(element(by.xpath("//a[.='images37.jpg']")).isPresent());
-
-            
-            
-
         //     // first.mousehoveronfile();
         //     // first.options();
         //     // first.deletefile();
         //     // first.sharefileclick();
          });
-
-    
         it ("Pinned message functionlaity of pinnedmessage Tab",function() {
         //browser.driver.sleep(15000);
-       
         first.searchbar();
         first.clicksend();
         first.mousehover();
@@ -132,7 +119,8 @@ describe('Team Right panel functionality', function () {
 
         });
     
-        it ('Right panel close and logout',function(){
+        it ('Right panel close and logout',function()
+        {
 
             first.closerightpanel();
             first.logout();
