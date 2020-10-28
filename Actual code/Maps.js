@@ -28,8 +28,12 @@ describe('One-to-One Maps Functionality', function () {
         first.clickonweekly();
         first.closerightpanel();
     });
-    it('Location and members route map',function(){
+    /*it('Location and members route map',function(){
         first.clickonmenubardirection();
+        //first.directionfrom();
+        //first.keyboardactionsfrom();
+        //first.directionto();
+        //first.keyboardactionsfrom();
         first.clickonmembersradionutton();
         first.entermembername();
         first.frommemberselectinmembersearch();
@@ -38,16 +42,18 @@ describe('One-to-One Maps Functionality', function () {
         first.clickonSearchbutton();
         first.closerightpanel();
         first.clearsearchresult();    
-    });    
+    });    */
     it('Members and Teams search',function(){
         first.clickonmenubarmemberandteamsearch();
         first.entermemberandteamsearch();
         first.selectingmemberinMemberandTeamsearch();
+        first.keyboardactionsfrom();
         first.clearsearchresult();
     });
     it('Location search',function(){
         first.clickonmenubarlocationsearch();
         first.enterlocation();
+        first.keyboardactionsfrom();
     });
 
 
