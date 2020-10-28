@@ -15,8 +15,6 @@ describe('Announcement channel Right panel functionality', function () {
         first.userName(datacode.userName);
         first.password(datacode.password);
         first.loginclick();
-       
-    
     });
     it ('Create channel click',function(){
 
@@ -29,6 +27,7 @@ describe('Announcement channel Right panel functionality', function () {
       
         //first.selectallmemberscheckbox();
         first.createchannelbuttonclick();
+        first.leftchannelname();
 
     });
 
@@ -38,7 +37,6 @@ describe('Announcement channel Right panel functionality', function () {
         {
                 expect("channelnamesame").toBe("channelnamesame");
                 first.leftchannelname();
-
         }
         else
         {
@@ -49,7 +47,6 @@ describe('Announcement channel Right panel functionality', function () {
     });
         it ("Checking the rightside panel opened or not in channel",function() {
 
-            
             if (first.comparinrightgrpnames())
         {
                 expect("rightsidechannelnamesame").toBe("rightsidechannelnamesame");
@@ -62,15 +59,13 @@ describe('Announcement channel Right panel functionality', function () {
         }
 
      });
-    
-
         it ("Checking the Channelname,members count,Created-by,Created-on in Channel profile Tab",function() {
               
             expect(first.channelnameinrightpanel()).toContain(first.getrightpanelchannelname());
-            expect(first.channeltypeinrightpanel()).toContain("Announcement")
-            expect(first.headermembercount()).toContain(first.channelmembercountinrightpanel());
-            expect(first.createdbychannel()).toContain(first.createdbychannel());
-            expect(first.createdondate()).toContain("2020");
+            expect(first.announcementrightpanelchannelname()).toContain("Automationchannelannouncement")
+            expect(first.headermembercount()).toContain(first.announcementrightpanelmemberscount());
+            expect(first.announcementrightpanelcreatedby()).toContain("Padma Bollu");
+            expect(first.announcementrightpanelcreateddate()).toContain("2020");
      });
         it ("Channel members Tab",function() {
 
@@ -96,10 +91,10 @@ describe('Announcement channel Right panel functionality', function () {
             first.groupinnerclick();
             first.sharefileclick();
             expect(element(by.xpath("//a[.='images37.jpg']")).isPresent());       
-         });
+        });
 
     
-        it ("Pinned message functionlaity of pinnedmessage Tab",function() {
+        it("Pinned message functionlaity of pinnedmessage Tab",function() {
         first.searchbar();
         first.clicksend();
         first.mousehover();
@@ -107,8 +102,7 @@ describe('Announcement channel Right panel functionality', function () {
         first.pinmessageoptions();
         first.groupinnerclick();
         first.pinmessageclick();
-        expect(element(by.css(".rightbar-msg")).getText()).toBe("ppf");
-
+        expect(element(by.css(".rightbar-msg")).getText()).toBe("india");
 // // // // //-------- for unpinned fuctionlaity--------------------/////
         first.mousehoverpinmessage();
         first.clickOnpinnedmessagesDeleteOption(); 
@@ -117,7 +111,7 @@ describe('Announcement channel Right panel functionality', function () {
         first.pinmessageclick();
         expect(element(by.cssContainingText('.mb-0.rightbar-msg', "ppf")).isPresent());
 
-        });
+    });
     
         it ('Right panel close and logout',function(){
 
