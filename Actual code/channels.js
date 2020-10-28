@@ -5,8 +5,6 @@ var first = require('./../Complexe code/Tc.js');
 
 const { ExpectedConditions, element, browser } = require('protractor');
 
-
-
 describe('Public channel Right panel functionality', function () {
         
     it ('User login to the application', function () {
@@ -16,8 +14,17 @@ describe('Public channel Right panel functionality', function () {
         first.password(datacode.password);
         first.loginclick();
         //first.searchusernameclick();
+        //first.pickchannle();
+        //first.pickchannle();
 
-    });   
+    });
+    /*it ('Instanc channel creation',function(){
+        first.createplusbuttonclick();
+        first.enteravalueforselectingusersininstance();
+        first.selectingmembersforinstants();
+        first.clickonsavebuttonforinstance();
+    }) */  
+    
     it ('Create channel click',function(){
 
         first.createchannel();
@@ -29,13 +36,10 @@ describe('Public channel Right panel functionality', function () {
       
         //first.selectallmemberscheckbox(); for selecte the checkbox for all members
         first.createchannelbuttonclick();
+        first.leftchannelname();
 
     });
-    // it('Search mebers print',function(){
-    //     expect(first.selectedmembernames()).toEqual("ukhefjkeh");
-    // })
-    
-
+   
     it ('Checking the Channel name', function()  {
 
         if(first.comparinggrpnames())
@@ -115,7 +119,7 @@ describe('Public channel Right panel functionality', function () {
         first.pinmessageoptions();
         first.groupinnerclick();
         first.pinmessageclick();
-        expect(element(by.css(".rightbar-msg")).getText()).toBe("ppf");
+        expect(element(by.css(".rightbar-msg")).getText()).toBe("india");
 
 // // // // //-------- for unpinned fuctionlaity--------------------/////
         first.mousehoverpinmessage();
