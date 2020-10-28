@@ -30,6 +30,7 @@ describe('Private channel Right panel functionality', function () {
       
         //first.selectallmemberscheckbox();
         first.createchannelbuttonclick();
+        first.leftchannelname();
 
     });
 
@@ -110,7 +111,7 @@ describe('Private channel Right panel functionality', function () {
         first.pinmessageoptions();
         first.groupinnerclick();
         first.pinmessageclick();
-        expect(element(by.css(".rightbar-msg")).getText()).toBe("ppf");
+        expect(element(by.css(".rightbar-msg")).getText()).toBe("india");
 
 // // // // //-------- for unpinned fuctionlaity--------------------/////
         first.mousehoverpinmessage();
@@ -118,7 +119,7 @@ describe('Private channel Right panel functionality', function () {
         first.closerightpanel();
         first.groupinnerclick();
         first.pinmessageclick();
-        expect(element(by.cssContainingText('.mb-0.rightbar-msg', "ppf")).isPresent());
+        expect(element(by.cssContainingText('.mb-0.rightbar-msg', "india")).isPresent());
 
         });
     
