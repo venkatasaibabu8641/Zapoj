@@ -529,7 +529,7 @@ this.threademoij = function(){
 }
 this.selectthreademoji = function(){
   sleep();
-  element(by.css(".icon-ng2_em_hourglass")).click();
+  element(by.css(".icon-ng2_em_angel")).click();
   
 }
 this.sinneptclick = function(){
@@ -582,11 +582,11 @@ this.threadmessageeditclick = function(){
 }
 this.entereditmessage = function(){
   sleep();
-  element(by.name('replyMessage')).sendKeys("edit");
+  element(by.id('topic')).sendKeys("edit");
 }
 this.enterclickthread = function(){
   sleep();
-element(by.name('replyMessage')).sendKeys(protractor.Key.ENTER);   
+element(by.id('topic')).sendKeys(protractor.Key.ENTER);   
 }
 this.threadurlclick = function(){
   sleep();
@@ -876,17 +876,16 @@ this.clickonsavebuttonforinstance = function(){
 this.clickontaskmanager = function(){
   sleep();
   element(by.css("ul.nav.navbar-nav.navbar-right.service-nav>li[title='Task Manager']")).click();
-  sleep();
+  
 }
 this.clickonviewalllink = function(){
-  sleep();
-  element(by.xpath("//a[.='View All Boards']")).click();
-  sleep();
+  
+  element(by.css('a[data-target="#board-list"]')).click();
+  
 }
 this.selectboard = function(){
   sleep();
-  element(by.xpath("//aadhya-task-page[1]/aadhya-dynamic-modal[@class='medium-popup board-list-modal']//span[.='new kanban 12 test']")).click();
-  sleep();
+  element(by.xpath("//*[@id='main-body-index']/aap-zapoj/app-chat-page/div/div/div/div/div/aadhya-task-page/aadhya-dynamic-modal[1]/div/div/div[2]/ul/li[1]/a/span")).click();
 }
 this.createlist = function(){
   sleep();
@@ -900,18 +899,86 @@ this.enterlistname = function(){
 this.clickforcreatelist = function(){
   sleep();
   element(by.xpath("//button[@class='btn btn-primary']")).click();
+  
+}
+this.mousehoveronplusbutton = function(){
+  sleep();
+  let b = element.all(by.css(".list-container.cdk-drop-list div>span[data-toggle='modal']"));
+        
+  browser.actions().mouseMove(b.last()).click().perform();
+ 
+}
+this.entercardtitle = function(){
+  sleep();
+  element(by.name("cardName")).sendKeys("Automation script card");
+  
+}
+this.enterdiscriptionforcard = function(){
+  
+  element(by.css("div.ngx-editor-textarea")).sendKeys("Automation script description for card");
+  
+}
+this.prioritydropdownclick = function(){
+
+  element(by.css("div>svg.icon-fill")).click();
+}
+this.choosepriority = function(){
+  
+  element.all(by.css("div>ul.dropdown-menu.w-100.cstm-task-dropdown li")).last().click();
+}
+this.enterplannedhours = function(){
+  
+  element(by.css("[name='plannedHours']")).sendKeys("1")
+}
+this.enterloggedhours = function(){
+  
+  element(by.css("[name='loggedHours']")).sendKeys("2");
+}
+this.membersdropdownclick = function(){
+  sleep();
+  element(by.css("span>svg.icon-fill")).click();
+}
+this.selectmemebrsincard = function(){
+  sleep();
+  element.all(by.css(".unstyle-list.new-assignee-list.mb-10 li")).get(0).click();
+  element.all(by.css(".unstyle-list.new-assignee-list.mb-10 li")).get(1).click();
+  element.all(by.css(".unstyle-list.new-assignee-list.mb-10 li")).get(2).click();
+  element.all(by.css(".unstyle-list.new-assignee-list.mb-10 li")).get(3).click();
+}
+this.closeofmemberpopup = function(){
+  sleep();
+  element(by.css(".btn.btn-primary.btn-sm")).click();
+}
+this.selectdateincard = function(){
+
+  var pickerDue = element(by.name("cardDueDate")).click();
+
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth()+1; //January is 0!
+  var yyyy = today.getFullYear();
+  
+  if(dd<10) {
+      dd='0'+dd
+  } 
+  
+  if(mm<10) {
+      mm='0'+mm
+  } 
+  
+  today = dd+'-'+mm+'-'+yyyy;
+  
+  pickerDue.clear();
+  pickerDue.sendKeys(today);
+}
+
+this.clickonsavebuttonforcard = function(){
+  sleep();
+  element(by.css("button[data-toggle='modal']")).click();
   sleep();
 }
 
-
-
-
-
-
-};
-
-
-
+}
 
   module.exports = new Grouprightpanle()
 
