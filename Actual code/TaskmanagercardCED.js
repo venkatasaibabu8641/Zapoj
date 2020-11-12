@@ -22,7 +22,7 @@ describe('Task manager card CED operations', function () {
         first.enterlistname();
         first.clickforcreatelist();
         first.mousehoveronplusbutton();
-        first.clickforplusbutton();
+       
     })
     it ('Entering the details in Card',function(){
         first.entercardtitle();
@@ -34,7 +34,8 @@ describe('Task manager card CED operations', function () {
         first.membersdropdownclick();
         first.selectmemebrsincard();
         first.closeofmemberpopup();
-        //first.selectdateincard();
+
+        first.selectdateincard();
         //first.secondsection();
         //first.thirdsection();
         first.clickonsavebuttonforcard();
